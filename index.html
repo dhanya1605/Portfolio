@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhanyasri Ravikumar | Data Analyst & Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-dark: #0F6E56;
+    --teal-mid: #5DCAA5;
+    --bg: #f7f9f8;
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --card-bg: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,249,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--teal-dark);
+    letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 80px 2rem 4rem;
+    max-width: 1100px; margin: 0 auto;
+    gap: 4rem;
+  }
+  .hero-content { flex: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal-light); color: var(--teal-dark);
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
+    padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); display: inline-block; }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero-subtitle {
+    font-size: 1.1rem; color: var(--muted); margin: 1rem 0 2rem;
+    max-width: 480px; font-weight: 300; line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal); color: white;
+    padding: 12px 28px; border-radius: 8px;
+    text-decoration: none; font-weight: 500; font-size: 0.95rem;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--text);
+    padding: 12px 28px; border-radius: 8px;
+    text-decoration: none; font-weight: 500; font-size: 0.95rem;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--teal); transform: translateY(-1px); }
+
+  .hero-visual {
+    flex: 0 0 320px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px 24px;
+    display: flex; align-items: center; gap: 16px;
+    transition: box-shadow 0.2s;
+  }
+  .stat-card:hover { box-shadow: 0 4px 20px rgba(29,158,117,0.1); }
+  .stat-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--teal-light); display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat-value { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-top: 2px; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.2; letter-spacing: -0.02em;
+    margin-bottom: 2.5rem; color: var(--text);
+  }
+  .section-divider {
+    width: 48px; height: 3px; background: var(--teal);
+    border-radius: 2px; margin-bottom: 2.5rem;
+  }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .about-text p { color: var(--muted); margin-bottom: 1.2rem; font-weight: 300; line-height: 1.9; }
+  .about-highlights { display: flex; flex-direction: column; gap: 14px; }
+  .highlight-item {
+    background: var(--white); border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+  }
+  .highlight-item strong { color: var(--teal-dark); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .highlight-item p { font-size: 0.95rem; color: var(--text); margin-top: 2px; font-weight: 400; }
+
+  /* EDUCATION */
+  .edu-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem 2.5rem;
+    display: flex; gap: 2rem; align-items: flex-start;
+    transition: box-shadow 0.2s;
+  }
+  .edu-card:hover { box-shadow: 0 4px 24px rgba(29,158,117,0.1); }
+  .edu-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--teal-light); display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+  }
+  .edu-degree { font-size: 1.1rem; font-weight: 600; color: var(--text); }
+  .edu-college { font-size: 0.95rem; color: var(--teal-dark); font-weight: 500; margin: 4px 0; }
+  .edu-meta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .edu-pill {
+    font-size: 0.8rem; padding: 4px 12px; border-radius: 100px;
+    background: var(--teal-light); color: var(--teal-dark); font-weight: 500;
+  }
+
+  /* EXPERIENCE */
+  .exp-timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+  .exp-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.8rem 2rem;
+    position: relative; overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .exp-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%; background: var(--teal);
+  }
+  .exp-card:hover { box-shadow: 0 4px 24px rgba(29,158,117,0.1); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
+  .exp-role { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+  .exp-company { font-size: 0.95rem; color: var(--teal); font-weight: 500; margin: 4px 0; }
+  .exp-duration {
+    font-size: 0.8rem; padding: 4px 12px; border-radius: 100px;
+    background: var(--teal-light); color: var(--teal-dark); font-weight: 500; white-space: nowrap;
+  }
+  .exp-desc { font-size: 0.95rem; color: var(--muted); margin-top: 10px; line-height: 1.7; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+  .project-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.8rem;
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .project-card:hover { box-shadow: 0 8px 32px rgba(29,158,117,0.12); transform: translateY(-3px); }
+  .project-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem; color: var(--teal-light); line-height: 1;
+    margin-bottom: 8px; font-weight: 400;
+  }
+  .project-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
+  .project-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; flex: 1; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .project-tag {
+    font-size: 0.75rem; padding: 3px 10px; border-radius: 100px;
+    background: var(--teal-light); color: var(--teal-dark); font-weight: 500;
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 14px; font-size: 0.85rem; color: var(--teal);
+    text-decoration: none; font-weight: 500;
+  }
+  .project-link:hover { color: var(--teal-dark); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .skill-group {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem 1.8rem;
+  }
+  .skill-group-title {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-group-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    font-size: 0.85rem; padding: 6px 14px; border-radius: 8px;
+    background: var(--bg); border: 1px solid var(--border);
+    color: var(--text); font-weight: 400; transition: all 0.2s;
+  }
+  .skill-tag:hover { background: var(--teal-light); border-color: var(--teal-mid); color: var(--teal-dark); }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 14px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 18px;
+    text-decoration: none; color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .contact-item:hover { border-color: var(--teal); box-shadow: 0 2px 12px rgba(29,158,117,0.1); }
+  .contact-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--teal-light); display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; }
+  .contact-value { font-size: 0.95rem; color: var(--text); font-weight: 500; margin-top: 1px; word-break: break-all; }
+  .contact-cta {
+    background: var(--teal-light); border-radius: 14px;
+    padding: 2.5rem; border: 1px solid #9FE1CB;
+  }
+  .contact-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--teal-dark); }
+  .contact-cta p { color: var(--teal-dark); font-size: 0.95rem; margin-bottom: 1.5rem; opacity: 0.85; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 0.85rem;
+    background: var(--white);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content { animation: fadeUp 0.7s ease both; }
+  .hero-visual { animation: fadeUp 0.7s 0.2s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; gap: 2.5rem; padding-top: 90px; }
+    .hero-visual { flex: none; width: 100%; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Dhanyasri R.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span></span> Open to Opportunities</div>
+    <h1>Dhanyasri<br><em>Ravikumar</em></h1>
+    <p class="hero-subtitle">Data Analyst & Data Scientist turning raw data into meaningful insights. Passionate about machine learning, deep learning, and building intelligent systems.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View My Work →</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-card">
+      <div class="stat-icon">🎓</div>
+      <div>
+        <div class="stat-label">Degree</div>
+        <div class="stat-value">B.Tech AI & ML — 2026</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💼</div>
+      <div>
+        <div class="stat-label">Experience</div>
+        <div class="stat-value">2 Internships</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🚀</div>
+      <div>
+        <div class="stat-label">Projects</div>
+        <div class="stat-value">3 Key Projects</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📍</div>
+      <div>
+        <div class="stat-label">Location</div>
+        <div class="stat-value">Chennai, India</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm Dhanyasri Ravikumar, a final-year B.Tech student specializing in Artificial Intelligence and Machine Learning at St. Joseph's College of Engineering, Chennai.</p>
+      <p>I'm passionate about extracting valuable insights from complex datasets and building intelligent systems that solve real-world problems. With hands-on experience in data science and cybersecurity internships, I bring both analytical rigor and a security-conscious mindset to my work.</p>
+      <p>When I'm not building models or dashboards, I'm exploring the latest advancements in deep learning, edge AI, and optimization algorithms.</p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-item">
+        <strong>Focus Area</strong>
+        <p>Data Science, Machine Learning & Deep Learning</p>
+      </div>
+      <div class="highlight-item">
+        <strong>Current CGPA</strong>
+        <p>8.05 (till 7th semester)</p>
+      </div>
+      <div class="highlight-item">
+        <strong>Domain Strength</strong>
+        <p>Predictive Modeling, Data Visualization & Edge AI</p>
+      </div>
+      <div class="highlight-item">
+        <strong>Additional Skill</strong>
+        <p>Cybersecurity & Malware Analysis Fundamentals</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--white); max-width: 100%; padding: 5rem 2rem;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">Academic Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">B.Tech in Artificial Intelligence and Machine Learning</div>
+        <div class="edu-college">St. Joseph's College of Engineering, Chennai</div>
+        <div class="edu-meta">
+          <span class="edu-pill">2022 – 2026</span>
+          <span class="edu-pill">CGPA: 8.05 (till 7th sem)</span>
+          <span class="edu-pill">AI & ML Specialization</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Work History</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="exp-timeline">
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Data Science Intern</div>
+          <div class="exp-company">BIG-SI BUCKS Technologies</div>
+        </div>
+        <span class="exp-duration">May 2025 – Jun 2025</span>
+      </div>
+      <p class="exp-desc">Gained hands-on knowledge of core data science models and algorithms. Worked on understanding predictive modeling techniques, data preprocessing pipelines, and applying machine learning algorithms to structured datasets in a professional environment.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Cybersecurity Intern</div>
+          <div class="exp-company">Supraja Technologies</div>
+        </div>
+        <span class="exp-duration">Jan 2025 – Mar 2025</span>
+      </div>
+      <p class="exp-desc">Learned to identify and analyze malware attacks targeting web applications. Gained foundational knowledge in ethical hacking, vulnerability assessment, and web security practices, developing a strong security-aware mindset alongside data science skills.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--white); max-width: 100%; padding: 5rem 2rem;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">What I've Built</div>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-num">01</div>
+        <div class="project-title">Coffee & Tea Plantation Productivity Analysis</div>
+        <p class="project-desc">Analyzed district-wise coffee and tea plantation data from government sources. Cleaned, transformed, and combined multiple datasets using Power BI (Power Query). Built an interactive dashboard to compare crop-wise area, production, and productivity. Identified efficiency differences across districts using KPI metrics and visual analysis.</p>
+        <div class="project-tags">
+          <span class="project-tag">Power BI</span>
+          <span class="project-tag">Power Query</span>
+          <span class="project-tag">Data Visualization</span>
+          <span class="project-tag">KPI Analysis</span>
+        </div>
+        <a href="https://github.com/dhanya1605/Plantation-Dashboard" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">02</div>
+        <div class="project-title">Evolutionary Optimization Framework for Student Skill Prediction</div>
+        <p class="project-desc">Designed a GA-optimized XGBoost framework to predict student skill progression using academic and behavioral learning data. Implemented Genetic Algorithms for automatic hyperparameter tuning and feature selection, achieving higher prediction accuracy and lower error rates compared to Logistic Regression, Random Forest, and standard XGBoost.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">XGBoost</span>
+          <span class="project-tag">Genetic Algorithms</span>
+          <span class="project-tag">ML Optimization</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">03</div>
+        <div class="project-title">Audio-Visual Early Fire & Smoke Detection on Edge Devices</div>
+        <p class="project-desc">Developed a real-time fire and smoke detection system using YOLOv8 for visual detection and CNN-LSTM for audio-based fire sound recognition. Implemented decision-level fusion of audio and visual outputs to reduce false alarms. Optimized for edge deployment enabling low-latency, offline operation with real-time alerts.</p>
+        <div class="project-tags">
+          <span class="project-tag">YOLOv8</span>
+          <span class="project-tag">CNN-LSTM</span>
+          <span class="project-tag">Deep Learning</span>
+          <span class="project-tag">Edge AI</span>
+          <span class="project-tag">Python</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Toolkit</div>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Java (Basics)</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools & Platforms</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">Jupyter Notebook</span>
+        <span class="skill-tag">Google Colab</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Libraries & Frameworks</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">XGBoost</span>
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">Keras</span>
+        <span class="skill-tag">YOLOv8</span>
+        <span class="skill-tag">Matplotlib</span>
+        <span class="skill-tag">Seaborn</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Domains</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Machine Learning</span>
+        <span class="skill-tag">Deep Learning</span>
+        <span class="skill-tag">Data Visualization</span>
+        <span class="skill-tag">Predictive Modeling</span>
+        <span class="skill-tag">Edge AI</span>
+        <span class="skill-tag">Cybersecurity Basics</span>
+        <span class="skill-tag">Feature Engineering</span>
+        <span class="skill-tag">EDA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--white); max-width: 100%; padding: 5rem 2rem;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a href="mailto:dhanyasriravikumar@gmail.com" class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">dhanyasriravikumar@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/dhanyasri-ravikumar-0b666a265/" target="_blank" class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">dhanyasri-ravikumar</div>
+          </div>
+        </a>
+        <a href="https://github.com/dhanya1605" target="_blank" class="contact-item">
+          <div class="contact-icon">🐙</div>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/dhanya1605</div>
+          </div>
+        </a>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Chennai, India</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-cta">
+        <h3>Open to Opportunities</h3>
+        <p>I'm actively looking for full-time roles and internships in Data Science, Data Analytics, and Machine Learning. Let's build something great together!</p>
+        <a href="mailto:dhanyasriravikumar@gmail.com" class="btn-primary">Say Hello →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & built by Dhanyasri Ravikumar · Chennai, India · 2025</p>
+</footer>
+
+</body>
+</html>
